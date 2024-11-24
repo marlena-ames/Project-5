@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using Unity.AI.Navigation;
 using Unity.VisualScripting;
+using Unity.Entities;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,6 +14,10 @@ public class MazeGenerator : MonoBehaviour
     public GameObject[] tiles;
 
     public GameObject player;
+    public GameObject WinPoint;
+    public GameObject enemy;
+    public Vector3 playerPos;
+
 
     const int N = 1;
     const int E = 2;
@@ -27,12 +32,12 @@ public class MazeGenerator : MonoBehaviour
 
     List<List<int>> map = new List<List<int>>();
 
-    
+
 
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         cell_walls[new Vector2(0, -1)] = N;
         cell_walls[new Vector2(1, 0)] = E;
@@ -42,8 +47,13 @@ public class MazeGenerator : MonoBehaviour
         MakeMaze();
 
         GameObject p = GameObject.Instantiate(player);
-        p.transform.position = new Vector3(2.91f, 1f, 4.6f);
+        p.transform.position = new Vector3(5f, 1f, 5f);
+        GameObject w = GameObject.Instantiate(WinPoint);
+        w.transform.position = new Vector3(95f, 9.8f, 105f);
+        GameObject e = GameObject.Instantiate(enemy);
+        e.transform.position = new Vector3(5f, .01f, 105f);
     }
+
 
     private List<Vector2> CheckNeighbors(Vector2 cell, List<Vector2> unvisited) {
         // Returns a list of cell's unvisited neighbors
@@ -86,7 +96,7 @@ public class MazeGenerator : MonoBehaviour
 
             if (neighbors.Count > 0)
             {
-                Vector2 next = neighbors[UnityEngine.Random.RandomRange(0, neighbors.Count)];
+                Vector2 next = neighbors[UnityEngine.Random.Range(0, neighbors.Count)];
                 stack.Add(current);
 
                 Vector2 dir = next - current;
@@ -112,11 +122,10 @@ public class MazeGenerator : MonoBehaviour
             
         }
 
-        for (int i = 0; i < width; i++)
-        {
-            
-            for (int j = 0; j < height; j++)
-            {
+        GameObject cookTile=null;
+
+        for (int i = 0; i < width; i++){
+            for (int j = 0; j < height; j++){
                 GameObject tile = GameObject.Instantiate(tiles[map[i][j]]);
                 tile.transform.parent = gameObject.transform;
 
@@ -124,6 +133,8 @@ public class MazeGenerator : MonoBehaviour
                 tile.name += " " + i.ToString() + ' ' + j.ToString();
                 tile.GetComponentInChildren<NavMeshSurface>().BuildNavMesh();
                
+                if (i==0 & j == 0) { cookTile = tile;}
+                cookTile.GetComponentInChildren<NavMeshSurface>().BuildNavMesh();
             }
 
         }

@@ -561,10 +561,10 @@ GameObject:
   - component: {fileID: 1905210857}
   - component: {fileID: 1905210856}
   - component: {fileID: 1905210855}
-  - component: {fileID: 1905210854}
   - component: {fileID: 1905210859}
   - component: {fileID: 1905210858}
   - component: {fileID: 1905210860}
+  - component: {fileID: 1905210861}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -572,29 +572,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &1905210854
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1905210853}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1905210855
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -615,7 +592,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a36e72363a819b84a996439f13534bfa, type: 2}
+  - {fileID: 2100000, guid: 464b72c7be538424093883bff7168d59, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -644,7 +622,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1905210853}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 8354703861718019206, guid: dc04ca177318614498c43c6929d3bfeb, type: 3}
 --- !u!4 &1905210857
 Transform:
   m_ObjectHideFlags: 0
@@ -654,7 +632,7 @@ Transform:
   m_GameObject: {fileID: 1905210853}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.91, y: 0.99, z: -0.86}
+  m_LocalPosition: {x: 19.91, y: -0.05, z: -0.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -713,6 +691,27 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &1905210861
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905210853}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 1.7674752, z: 0.32769072}
+  m_Center: {x: 0.000000059604645, y: 0.8834155, z: 0.033972375}
 --- !u!1 &2103046611
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,6 +756,14 @@ PrefabInstance:
     - target: {fileID: 1933069850631641511, guid: a989a26c76875fb43b14d309592f9e72, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248854087514512361, guid: a989a26c76875fb43b14d309592f9e72, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248854087514512361, guid: a989a26c76875fb43b14d309592f9e72, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.057
       objectReference: {fileID: 0}
     - target: {fileID: 6643455881195280310, guid: a989a26c76875fb43b14d309592f9e72, type: 3}
       propertyPath: m_LocalPosition.x
